@@ -14,6 +14,7 @@ $legacy-support-for-mozilla: true;
 //////////////////////////////
 @import "partials/normalize";
 @import "partials/base";
+@import "compass/css3/border-radius";
 
 $break-phablet: 	500px;
 $break-tablet: 		768px;
@@ -92,6 +93,7 @@ main {
 /* .cta-item sobreescribe width, grid, gutter */
 /* .last sobreescribe margin-right */
 .cta-item {
+	@include border-radius(5px);
 	@include float-span(1, $grid: 3, $gutter: .1);
 	background: gray;
 }
