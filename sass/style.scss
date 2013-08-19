@@ -1,0 +1,121 @@
+//////////////////////////////
+// Set legacy support
+//
+// If you need support for IE6 or IE7, you should install the Box Sizing polyfill.
+// In your project's folder from the command line, type the following:
+// compass install singularitygs/box-sizing
+//////////////////////////////
+$legacy-support-for-ie6:     true;
+$legacy-support-for-ie7:     true;
+$legacy-support-for-mozilla: true;
+
+//////////////////////////////
+// Import Base
+//////////////////////////////
+@import "partials/normalize";
+@import "partials/base";
+
+$break-phablet: 	500px;
+$break-tablet: 		768px;
+$break-desktop: 	1024px;
+
+/* grids */
+/*
+$grids: 3;
+$grids: add-grid(5 at $break-phablet);
+$grids: add-grid(7 at $break-tablet);
+$grids: add-grid(12 at $break-desktop);
+$gutters: 1/3;
+*/
+
+$grids: 12;
+$gutters: 1/3;
+
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	color: #333;
+}
+.container {
+	min-height: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	@include background-grid;	
+}
+
+header,
+footer {
+	background: red;
+	float: none;
+	clear: both;
+}
+
+main {
+	background: blue;
+	@include grid-span(6,4);
+}
+
+#sidebar-first {
+	@include grid-span(3,1);
+	background: green;
+}
+#sidebar-second {
+	@include grid-span(3,10);
+	background: green;
+}
+.under-content {
+	@include grid-span(10,2,$options: 'both');
+	background: yellow;
+}
+
+/* ==================================================
+			Grid con floats, método 1
+================================================== */
+
+/* .cta-item sobreescribe width, location, context, output stlye  */
+/* .cta-item sobreescribe width, location, context, output stlye  */
+/*
+.cta-item {
+	@include grid-span(1, 1, 3, $output-style: 'float');
+	background: gray;
+}
+.last {
+	@include grid-span(1, 3, 3, $output-style: 'float')
+}
+*/
+
+/* ==================================================
+			Grid con floats, método 2
+================================================== */
+/* .cta-item sobreescribe width, grid, gutter */
+/* .last sobreescribe margin-right */
+.cta-item {
+	@include float-span(1, $grid: 3, $gutter: .1);
+	background: gray;
+}
+.last {
+	margin-right: 0;
+}
+
+/* ==================================================
+			Grid con floats, método CSS normal
+================================================== */
+
+/* grid simétrico normal */
+/*
+.cta-item {
+	width: 32%;
+	float: left;
+	margin-right: 2%;
+	background: gray;
+	text-align: center;
+	height: 100px;
+	line-height: 100px;
+}
+.last {
+	margin-right: 0;
+}
+*/
+
